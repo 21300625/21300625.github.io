@@ -29,9 +29,11 @@
 
         var options2 = {
 		colors:['#FF0000','#FEBEBE','#FAFAAA','#2EFF00','#00FFE9','#000CFF','#FA00FF','#9B5A00','#016000','#000A5B','#646464'],
-          	pieSliceText: 'value-and-percentage',
+          	pieSliceText: {
+			'value-and-percentage',textStyle: {color: 'black',  fontSize: 7}
+		},
 		sliceVisibilityThreshold :0,
-		fontSize: 7,
+		
 		legend: {
 			position: 'right',textStyle: {color: 'black',  fontSize: 12}
 		},
@@ -59,6 +61,6 @@
 	</div>
 	  
 	<!-- The chart will be displayed in this div -->
-	<div id="piechart" style="width: 1200px; height: 1200px;"></div>
+	<div id="piechart" style="width: 1300px; height: 1300px;"></div>
   </body>
 </html>
