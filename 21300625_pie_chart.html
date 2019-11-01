@@ -28,10 +28,9 @@
         var data2 = new google.visualization.arrayToDataTable(arrayData);
 
         var options2 = {
-          	pieSliceText: 'value',
-		legend: {
-			position: 'labeled'
+          	pieSliceText: {'label','value'
 		},
+		legend: 'none',
 		colors:['#FF0000','#FEBEBE','#FAFAAA','#2EFF00','#00FFE9','#000CFF','#FA00FF','#9B5A00','#016000','#000A5B','#646464'],
           	slices: {  1: {offset: 0.2},
 			 3: {offset: 0.3},
