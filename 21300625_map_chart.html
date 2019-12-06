@@ -3,32 +3,32 @@
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="jquery-csv.js"></script>
+  <script>
+
   <script type="text/javascript">
-      google.charts.load('current', {
-        'packages':['geochart'],
-        // Note: you will need to get a mapsApiKey for your project.
-        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-        'mapsApiKey': 'AIzaSyBS769XussOnMykYCf4mHoCHfY6nPDxwxg'
+    google.charts.load("current", {"packages": ["map"],'mapsApiKey': 'AIzaSyBS769XussOnMykYCf4mHoCHfY6nPDxwxg'});
+    google.charts.setOnLoadCallback(readFile);
+      
+    function readFile() {
+      filename = "data2.csv";
+      $.get(filename, function(csvString) {
+        // read a .csv file and save the data in arrayData variable
+        var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+        // send arrayData to 'draw' function
+        drawRegionsMap(arrayData)
       });
-    
+    };
+    google.charts.load('current', { 'packages': ['map'] });
+    google.charts.setOnLoadCallback(drawMap);
+
     function drawMap() {
-      var data = google.visualization.arrayToDataTable([
-        ['Country', 'Population'],
-        ['China', 'China: 1,363,800,000'],
-        ['India', 'India: 1,242,620,000'],
-        ['US', 'US: 317,842,000'],
-        ['Indonesia', 'Indonesia: 247,424,598'],
-        ['Brazil', 'Brazil: 201,032,714'],
-        ['Pakistan', 'Pakistan: 186,134,000'],
-        ['Nigeria', 'Nigeria: 173,615,000'],
-        ['Bangladesh', 'Bangladesh: 152,518,015'],
-        ['Russia', 'Russia: 146,019,512'],
-        ['Japan', 'Japan: 127,120,000']
-      ]);
+      var data = google.visualization.arrayToDataTable(arrayData);
 
     var options = {
+      zoomLevel=13,
       showTooltip: true,
-      showInfoWindow: true
+      showInfoWindow: true,
+      useMapTypeControl: true
     };
 
     var map = new google.visualization.Map(document.getElementById('chart_div'));
