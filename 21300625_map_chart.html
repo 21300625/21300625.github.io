@@ -27,18 +27,15 @@
 
      function drawMap() {
        var data = google.visualization.arrayToDataTable(arrayData);
-
-     var options = {
-       zoomLevel=13,
-       showTooltip: true,
-       showInfoWindow: true,
-       useMapTypeControl: true
+       var options = {
+         zoomLevel=13,
+         showTooltip: true,
+         showInfoWindow: true,
+         useMapTypeControl: true
+       };
+       var map = new google.visualization.Map(document.getElementById('chart_div'));
+       map.draw(data, options);
      };
-
-     var map = new google.visualization.Map(document.getElementById('chart_div'));
-
-     map.draw(data, options);
-   };
    </script>
   </head>
   <body>
