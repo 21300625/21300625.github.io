@@ -1,41 +1,41 @@
 <html>
   <head>
-   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   <script src="jquery-csv.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="jquery-csv.js"></script>
 
-   <script type="text/javascript">
-     google.charts.load("current", {"packages": ["map"],
-       // Note: you will need to get a mapsApiKey for your project.
-       // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-       'mapsApiKey': 'AIzaSyAjRuQQ3X-0e8hqaDgEvJd5NUAqAfaPcW8'
-     });
-     google.charts.setOnLoadCallback(readFile);
+    <script type="text/javascript">
+      google.charts.load("current", {"packages": ["map"],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        'mapsApiKey': 'AIzaSyAjRuQQ3X-0e8hqaDgEvJd5NUAqAfaPcW8'
+      });
+      google.charts.setOnLoadCallback(readFile);
       
-     function readFile() {
-       filename = "data2.csv";
-       $.get(filename, function(csvString) {
-         // read a .csv file and save the data in arrayData variable
-         var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
-         // send arrayData to 'draw' function
-         drawMap(arrayData)
-       });
-     };
+      function readFile() {
+        filename = "data2.csv";
+        $.get(filename, function(csvString) {
+          // read a .csv file and save the data in arrayData variable
+          var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+          // send arrayData to 'draw' function
+          drawMap(arrayData)
+        });
+      };
 
-     function drawMap(arrayData) {
-       var data = google.visualization.arrayToDataTable(arrayData);
-       var options = {
-         zoomLevel=13,
-         showTooltip: true,
-         showInfoWindow: true,
-         useMapTypeControl: true
-       };
-       var map = new google.visualization.Map(document.getElementById('chart_div'));
-       map.draw(data, options);
-     }
-   </script>
+      function drawMap(arrayData) {
+        var data = google.visualization.arrayToDataTable(arrayData);
+        var options = {
+          zoomLevel=13,
+          showTooltip: true,
+          showInfoWindow: true,
+          useMapTypeControl: true
+        };
+        var map = new google.visualization.Map(document.getElementById('chart_div'));
+        map.draw(data, options);
+      }
+    </script>
   </head>
   <body>
-   <div id="chart_div" style="width: 900px; height: 500px;"></div>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
   </body>
 </html>
